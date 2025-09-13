@@ -610,7 +610,8 @@ section {
 
 /* Contact Section */
 .contact {
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
+    padding: 5rem 0;
 }
 
 .contact-content {
@@ -637,6 +638,7 @@ section {
 .contact-links {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .contact-link {
@@ -644,13 +646,14 @@ section {
     align-items: center;
     gap: 0.5rem;
     padding: 0.875rem 1.5rem;
-    background: var(--bg-primary);
+    background: var(--bg-secondary);
     color: var(--text-primary);
     text-decoration: none;
     border-radius: 0.75rem;
     font-weight: 500;
     transition: all 0.3s ease;
     border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
 }
 
 .contact-link:hover {
@@ -658,6 +661,11 @@ section {
     color: white;
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
+    border-color: var(--accent-primary);
+}
+
+.contact-link i {
+    font-size: 1.2rem;
 }
 
 /* Terminal */
@@ -667,6 +675,7 @@ section {
     overflow: hidden;
     box-shadow: var(--shadow-xl);
     border: 1px solid #333;
+    max-width: 500px;
 }
 
 .terminal-header {
@@ -773,10 +782,15 @@ section {
     .contact-content {
         grid-template-columns: 1fr;
         gap: 2rem;
+        text-align: center;
     }
     
     .contact-links {
         justify-content: center;
+    }
+    
+    .terminal {
+        max-width: 100%;
     }
     
     .projects-grid {
@@ -823,6 +837,14 @@ section {
         padding: 0.75rem 1rem;
         font-size: 0.875rem;
     }
+    
+    .contact-info h3 {
+        font-size: 1.25rem;
+    }
+    
+    .contact-info p {
+        font-size: 0.9rem;
+    }
 }
 
 /* Animation for skill bars */
@@ -850,8 +872,8 @@ section {
 }
 
 .profile-image {
-    width: 150px;
-    height: 150px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid var(--accent-primary);
@@ -906,8 +928,8 @@ section {
 /* Responsive adjustments for profile image */
 @media (max-width: 768px) {
     .profile-image {
-        width: 120px;
-        height: 120px;
+        width: 70px;
+        height: 70px;
     }
     
     .hero-content {
@@ -922,8 +944,8 @@ section {
 
 @media (max-width: 480px) {
     .profile-image {
-        width: 100px;
-        height: 100px;
+        width: 60px;
+        height: 60px;
     }
     
     .age {
