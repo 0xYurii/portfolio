@@ -991,13 +991,14 @@ section {
 }
 
 
-/* Profile Image Styles */
+/* Profile Image Styles - Enhanced Interactive Design */
 .profile-container {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 2rem;
+    cursor: pointer;
 }
 
 .profile-image {
@@ -1007,16 +1008,61 @@ section {
     object-fit: cover;
     border: 4px solid var(--accent-primary);
     box-shadow: var(--shadow-xl);
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 2;
     position: relative;
 }
 
+/* Enhanced hover effects */
 .profile-image:hover {
-    transform: scale(1.05);
-    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+    transform: scale(1.08) rotate(2deg);
+    box-shadow: 0 25px 50px rgba(59, 130, 246, 0.4), 0 0 0 8px rgba(59, 130, 246, 0.1);
+    border-color: var(--accent-secondary);
 }
 
+/* Add a subtle pulse animation to indicate interactivity */
+.profile-container::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    border: 2px solid var(--accent-primary);
+    border-radius: 50%;
+    opacity: 0;
+    animation: pulse-ring 2s infinite;
+    z-index: 1;
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Show pulse ring on hover */
+.profile-container:hover::before {
+    animation: pulse-ring-hover 1s infinite;
+}
+
+@keyframes pulse-ring-hover {
+    0% {
+        transform: scale(0.9);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.3);
+        opacity: 0;
+    }
+}
+
+/* Enhanced overlay with better visibility */
 .profile-overlay {
     position: absolute;
     top: 0;
@@ -1027,31 +1073,65 @@ section {
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: all 0.3s ease;
-    z-index: 1;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 3;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
 }
 
 .profile-container:hover .profile-overlay {
     opacity: 1;
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .profile-container:hover .profile-image {
-    filter: blur(2px);
+    filter: blur(1px) brightness(0.8);
 }
 
-/* Age styling */
-.age {
-    font-size: 1.5rem;
-    color: var(--text-muted);
-    font-weight: 400;
-    font-style: italic;
+/* Add a hover tooltip */
+.profile-container::after {
+    content: 'Hover to see code!';
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    opacity: 0;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    z-index: 4;
+    box-shadow: var(--shadow-md);
 }
 
-/* Hero text container */
-.hero-text {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+.profile-container::after::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid var(--text-primary);
+}
+
+.profile-container:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-4px);
+}
+
+/* Add a subtle glow effect */
+.profile-container:hover .profile-image {
+    box-shadow: 
+        0 25px 50px rgba(59, 130, 246, 0.4), 
+        0 0 0 8px rgba(59, 130, 246, 0.1),
+        0 0 20px rgba(59, 130, 246, 0.3);
 }
 
 /* Responsive adjustments for profile image */
@@ -1059,6 +1139,11 @@ section {
     .profile-image {
         width: 150px;
         height: 150px;
+    }
+    
+    .profile-container::after {
+        font-size: 0.75rem;
+        bottom: -35px;
     }
     
     .hero-content {
@@ -1077,7 +1162,236 @@ section {
         height: 120px;
     }
     
+    .profile-container::after {
+        font-size: 0.7rem;
+        bottom: -30px;
+        padding: 0.375rem 0.75rem;
+    }
+    
     .age {
         font-size: 1.25rem;
+    }
+}
+
+/* Scroll Animation Classes */
+.scroll-fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-fade-in.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-slide-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-slide-left.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scroll-slide-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-slide-right.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scroll-scale-up {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-scale-up.animate {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.scroll-stagger-1 { transition-delay: 0.1s; }
+.scroll-stagger-2 { transition-delay: 0.2s; }
+.scroll-stagger-3 { transition-delay: 0.3s; }
+.scroll-stagger-4 { transition-delay: 0.4s; }
+.scroll-stagger-5 { transition-delay: 0.5s; }
+.scroll-stagger-6 { transition-delay: 0.6s; }
+
+/* Enhanced section transitions */
+.section-enter {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-enter.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hero section specific animations */
+.hero-title {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: heroTitleSlide 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+}
+
+.hero-bio {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroBioSlide 1s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
+}
+
+.hero-cta {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroCtaSlide 1s cubic-bezier(0.4, 0, 0.2, 1) 0.9s forwards;
+}
+
+.profile-container {
+    opacity: 0;
+    transform: scale(0.8) rotate(-5deg);
+    animation: profileSlide 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
+}
+
+@keyframes heroTitleSlide {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroBioSlide {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroCtaSlide {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes profileSlide {
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* Project cards staggered animation */
+.project-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Skill cards staggered animation */
+.skill-card {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-card.animate {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Contact section animations */
+.contact-info {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-info.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.contact-visual {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contact-visual.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Terminal typing animation */
+.terminal-line {
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: terminalType 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.terminal-line:nth-child(1) { animation-delay: 0.2s; }
+.terminal-line:nth-child(2) { animation-delay: 0.4s; }
+.terminal-line:nth-child(3) { animation-delay: 0.6s; }
+.terminal-line:nth-child(4) { animation-delay: 0.8s; }
+.terminal-line:nth-child(5) { animation-delay: 1s; }
+.terminal-line:nth-child(6) { animation-delay: 1.2s; }
+
+@keyframes terminalType {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Smooth section transitions */
+section {
+    position: relative;
+    overflow: hidden;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+    transition: left 0.8s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+section.animate::before {
+    left: 100%;
+}
+
+/* Enhanced mobile animations */
+@media (max-width: 768px) {
+    .scroll-fade-in,
+    .scroll-slide-left,
+    .scroll-slide-right,
+    .scroll-scale-up {
+        transform: translateY(20px);
+    }
+    
+    .scroll-slide-left.animate,
+    .scroll-slide-right.animate {
+        transform: translateY(0);
     }
 }

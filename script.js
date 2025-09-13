@@ -73,9 +73,70 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
     
+    // Enhanced Scroll Animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
+    
+    const scrollObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("animate");
+                
+                // Add section sweep effect
+                if (entry.target.tagName === 'SECTION') {
+                    entry.target.classList.add("animate");
+                }
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all sections
+    const sections = document.querySelectorAll("section");
+    sections.forEach(section => {
+        section.classList.add("section-enter");
+        scrollObserver.observe(section);
+    });
+    
+    // Observe project cards with staggered animation
+    const projectCards = document.querySelectorAll(".project-card");
+    projectCards.forEach((card, index) => {
+        card.classList.add("scroll-fade-in");
+        if (index % 2 === 0) {
+            card.classList.add("scroll-slide-left");
+        } else {
+            card.classList.add("scroll-slide-right");
+        }
+        card.classList.add(`scroll-stagger-${(index % 6) + 1}`);
+        scrollObserver.observe(card);
+    });
+    
+    // Observe skill cards with staggered animation
+    const skillCards = document.querySelectorAll(".skill-card");
+    skillCards.forEach((card, index) => {
+        card.classList.add("scroll-scale-up");
+        card.classList.add(`scroll-stagger-${(index % 6) + 1}`);
+        scrollObserver.observe(card);
+    });
+    
+    // Observe contact elements
+    const contactInfo = document.querySelector(".contact-info");
+    const contactVisual = document.querySelector(".contact-visual");
+    
+    if (contactInfo) {
+        contactInfo.classList.add("scroll-slide-left");
+        scrollObserver.observe(contactInfo);
+    }
+    
+    if (contactVisual) {
+        contactVisual.classList.add("scroll-slide-right");
+        scrollObserver.observe(contactVisual);
+    }
+    
     // Animate skill bars when they come into view
     const skillBars = document.querySelectorAll(".skill-bar");
-    const observerOptions = {
+    const skillBarObserverOptions = {
         threshold: 0.5,
         rootMargin: "0px 0px -100px 0px"
     };
@@ -86,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 entry.target.classList.add("animate");
             }
         });
-    }, observerOptions);
+    }, skillBarObserverOptions);
     
     skillBars.forEach(bar => {
         skillBarObserver.observe(bar);
@@ -140,22 +201,17 @@ document.addEventListener("DOMContentLoaded", function() {
         lastScrollTop = scrollTop;
     });
     
-    // Add typing effect to hero title (disabled to prevent HTML parsing issues)
-    // Typing animation is disabled to prevent HTML parsing issues
-    // This section is commented out to avoid syntax errors
-    
     // Add parallax effect to hero section
     const hero = document.querySelector(".hero");
     if (hero) {
         window.addEventListener("scroll", function() {
             const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.5;
+            const rate = scrolled * -0.3;
             hero.style.transform = `translateY(${rate}px)`;
         });
     }
     
-    // Add hover effects to project cards
-    const projectCards = document.querySelectorAll(".project-card");
+    // Enhanced project card hover effects
     projectCards.forEach(card => {
         card.addEventListener("mouseenter", function() {
             this.style.transform = "translateY(-8px) scale(1.02)";
@@ -190,7 +246,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
     
-    // Add CSS for ripple effect
+    // Add CSS for ripple effect and animations
     const style = document.createElement("style");
     style.textContent = `
         .btn {
