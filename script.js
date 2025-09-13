@@ -134,6 +134,13 @@ document.addEventListener("DOMContentLoaded", function() {
         scrollObserver.observe(contactVisual);
     }
     
+    // Observe GitHub activity section
+    const githubActivity = document.querySelector(".github-activity");
+    if (githubActivity) {
+        githubActivity.classList.add("scroll-fade-in");
+        scrollObserver.observe(githubActivity);
+    }
+    
     // Animate skill bars when they come into view
     const skillBars = document.querySelectorAll(".skill-bar");
     const skillBarObserverOptions = {
