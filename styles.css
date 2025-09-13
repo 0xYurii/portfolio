@@ -459,6 +459,7 @@ section {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(10px);
 }
 
 .skill-card::before {
@@ -476,6 +477,7 @@ section {
 .skill-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-color: var(--accent-primary);
 }
 
 .skill-card:hover::before {
@@ -484,10 +486,12 @@ section {
 
 [data-theme="dark"] .skill-card {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    background: rgba(31, 41, 55, 0.8);
 }
 
 [data-theme="dark"] .skill-card:hover {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+    border-color: var(--accent-primary);
 }
 
 .skill-card-header {
@@ -548,6 +552,23 @@ section {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.skill-item:hover {
+    background: rgba(0, 0, 0, 0.05);
+    transform: translateX(4px);
+}
+
+[data-theme="dark"] .skill-item {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+[data-theme="dark"] .skill-item:hover {
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .skill-info {
@@ -601,49 +622,96 @@ section {
     color: #34d399;
 }
 
+/* Progress Bar Container - Gray background */
 .progress-container {
     width: 100%;
-    height: 0.5rem;
-    background: #e5e7eb;
-    border-radius: 9999px;
+    height: 0.5rem; /* 2px height (h-2) for clean, minimal appearance */
+    background: #e5e7eb; /* Gray background */
+    border-radius: 9999px; /* Rounded corners with rounded-full */
     overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="dark"] .progress-container {
-    background: #374151;
+    background: #374151; /* Dark mode gray background */
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
+/* Progress Fill - Colored bar that shows proficiency */
 .progress-bar {
     height: 100%;
-    border-radius: 9999px;
-    transition: all 0.5s ease;
+    border-radius: 9999px; /* Rounded corners with rounded-full */
+    transition: all 0.5s ease; /* Smooth animation with transition-all duration-500 */
+    position: relative;
+    overflow: hidden;
 }
 
-.progress-bar.beginner {
-    width: 50%;
-    background: #eab308;
-}
-
-.progress-bar.intermediate {
-    width: 75%;
-    background: #3b82f6;
-}
-
+/* Advanced Skills: Green bar fills 100% (w-full) */
 .progress-bar.advanced {
     width: 100%;
-    background: #10b981;
-}
-
-[data-theme="dark"] .progress-bar.beginner {
-    background: #fbbf24;
-}
-
-[data-theme="dark"] .progress-bar.intermediate {
-    background: #60a5fa;
+    background: linear-gradient(90deg, #10b981, #059669);
+    box-shadow: 0 1px 3px rgba(16, 185, 129, 0.3);
 }
 
 [data-theme="dark"] .progress-bar.advanced {
-    background: #34d399;
+    background: linear-gradient(90deg, #34d399, #10b981);
+    box-shadow: 0 1px 3px rgba(52, 211, 153, 0.4);
+}
+
+/* Intermediate Skills: Blue bar fills 75% (w-3/4) */
+.progress-bar.intermediate {
+    width: 75%;
+    background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+    box-shadow: 0 1px 3px rgba(59, 130, 246, 0.3);
+}
+
+[data-theme="dark"] .progress-bar.intermediate {
+    background: linear-gradient(90deg, #60a5fa, #3b82f6);
+    box-shadow: 0 1px 3px rgba(96, 165, 250, 0.4);
+}
+
+/* Beginner Skills: Yellow bar fills 50% (w-1/2) */
+.progress-bar.beginner {
+    width: 50%;
+    background: linear-gradient(90deg, #eab308, #d97706);
+    box-shadow: 0 1px 3px rgba(234, 179, 8, 0.3);
+}
+
+[data-theme="dark"] .progress-bar.beginner {
+    background: linear-gradient(90deg, #fbbf24, #f59e0b);
+    box-shadow: 0 1px 3px rgba(251, 191, 36, 0.4);
+}
+
+/* Add shimmer effect for more visual appeal */
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Hover effect for progress bars */
+.skill-item:hover .progress-bar {
+    transform: scaleY(1.2);
+    transition: all 0.3s ease;
+}
+
+.skill-item:hover .progress-container {
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+[data-theme="dark"] .skill-item:hover .progress-container {
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3), 0 0 0 2px rgba(96, 165, 250, 0.3);
 }
 
 /* Responsive Design */
