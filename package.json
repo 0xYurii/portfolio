@@ -1,0 +1,21 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Younes Hebaiche (0xYurii) - Backend Developer Portfolio",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "portfolio",
+    "backend",
+    "developer",
+    "nodejs",
+    "express"
+  ],
+  "author": "Younes Hebaiche (0xYurii)",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {}
+}
