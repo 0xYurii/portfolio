@@ -847,12 +847,11 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 2rem;
 }
 
 .profile-image {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid var(--accent-primary);
@@ -907,8 +906,8 @@ section {
 /* Responsive adjustments for profile image */
 @media (max-width: 768px) {
     .profile-image {
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: 120px;
     }
     
     .hero-content {
@@ -923,8 +922,8 @@ section {
 
 @media (max-width: 480px) {
     .profile-image {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
     }
     
     .age {
