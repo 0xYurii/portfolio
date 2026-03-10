@@ -1,459 +1,275 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Younes | Portfolio</title>
+    <title>0xYurii | Backend Developer</title>
+    <meta name="description" content="Younes Hebaiche — Backend developer specializing in Node.js, Express, TypeScript, and PostgreSQL.">
     <link rel="icon" type="image/jpeg" href="img/profile.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
     <header class="header">
         <nav class="nav">
-            <div class="nav-brand">
-                <h2>Younes </h2>
-            </div>
-            <ul class="nav-links">
+            <a href="#" class="nav-brand">0xYurii</a>
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <button class="theme-toggle" id="theme-toggle">
-                <i class="fas fa-moon"></i>
-            </button>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="hero-content">
             <div class="hero-text">
-                <h1 class="hero-title">
-                    2nd year CS student by day,<br>
-                    <span class="highlight">future full-stack dev by night</span><br>
-                    <span class="age">20</span>
-                </h1>
-                <p class="hero-bio">
-                    A self-taught developer passionate about building elegant backend solutions. 
-                    Specializing in Node.js, Express, and database management, with a mission to 
-                    create applications that bridge technical complexity with user simplicity.
-                </p>
+                <p class="hero-label">Backend Developer</p>
+                <h1 class="hero-title">I build APIs, systems,<br>and the logic behind things.</h1>
+                <p class="hero-subtitle">Node.js ecosystem. TypeScript. PostgreSQL. Clean architecture, solid APIs, no fluff.</p>
                 <div class="hero-cta">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="https://github.com/0xYurii" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="profile-container">
-                    <img src="img/profile.jpg" alt="Younes Hebaiche" class="profile-image">
-                    <div class="profile-overlay">
-                        <div class="code-block">
-                <div class="code-header">
-                    <span class="code-title">backend.js</span>
-                    <div class="code-dots">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
-                <div class="code-content">
-                    <span class="code-line"><span class="keyword">const</span> <span class="variable">express</span> = <span class="function">require</span>(<span class="string">"express"</span>);</span>
-                    <span class="code-line"><span class="keyword">const</span> <span class="variable">app</span> = <span class="function">express</span>();</span>
-                    <span class="code-line"></span>
-                    <span class="code-line"><span class="comment">// Crafting elegant solutions</span></span>
-                    <span class="code-line"><span class="variable">app</span>.<span class="function">get</span>(<span class="string">"/api/truth"</span>, <span class="keyword">async</span> (<span class="variable">req</span>, <span class="variable">res</span>) => {</span>
-                    <span class="code-line">  <span class="variable">res</span>.<span class="function">json</span>({ <span class="property">message</span>: <span class="string">"Logic prevails"</span> });</span>
-                    <span class="code-line">});</span>
+                <div class="code-window">
+                    <div class="code-header">
+                        <div class="code-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
                         </div>
+                        <span class="code-filename">server.ts</span>
+                        <span class="code-spacer"></span>
                     </div>
+                    <pre class="code-body"><code><span class="k">import</span> <span class="v">express</span> <span class="k">from</span> <span class="s">"express"</span>;
+<span class="k">import</span> { <span class="v">prisma</span> } <span class="k">from</span> <span class="s">"./db"</span>;
+
+<span class="k">const</span> <span class="v">app</span> = <span class="f">express</span>();
+
+<span class="v">app</span>.<span class="f">get</span>(<span class="s">"/api/status"</span>, (<span class="v">req</span>, <span class="v">res</span>) <span class="k">=></span> {
+  <span class="v">res</span>.<span class="f">json</span>({
+    <span class="p">status</span>: <span class="s">"operational"</span>,
+    <span class="p">uptime</span>: <span class="v">process</span>.<span class="f">uptime</span>(),
+  });
+});
+
+<span class="v">app</span>.<span class="f">listen</span>(<span class="n">3000</span>);</code></pre>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section class="projects" id="projects">
         <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <p class="section-subtitle">Backend solutions that solve real problems</p>
-            
+            <div class="section-header">
+                <h2 class="section-title">Projects</h2>
+                <p class="section-subtitle">Things I've built with real backend logic.</p>
+            </div>
             <div class="projects-grid">
-                <!-- Project 1: Paranormal Sightings -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">Paranormal Sightings</h3>
-                        <div class="project-links">
-                            <a href="https://paranormal-sightings.vercel.app" class="project-link" title="Live Demo" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                            <a href="https://github.com/0xYurii/paranormal-sightings" class="project-link" title="GitHub" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <p class="project-description">
-                        A full-stack web app for sharing and browsing ghostly encounters. 
-                        Features server-side rendering with EJS and a robust backend API.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">Express</span>
-                        <span class="tech-tag">EJS</span>
-                        <span class="tech-tag">SQLite</span>
-                    </div>
-                </div>
 
-                <!-- Project 2: Spiral Sounds -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">Spiral Sounds</h3>
+                <article class="project-card">
+                    <div class="project-top">
+                        <div class="project-icon"><i class="fas fa-comments"></i></div>
                         <div class="project-links">
-                            <a href="https://spiral-sounds.vercel.app/" class="project-link" title="Live Demo" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                            <a href="https://github.com/0xYurii/spiral-sounds" class="project-link" title="GitHub" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github"></i>
-                            </a>
+                            <a href="https://github.com/0xYurii/nodetalk" target="_blank" rel="noopener noreferrer" title="Source code"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
-                    <p class="project-description">
-                        A music e-commerce API with advanced genre filtering and dynamic search capabilities. 
-                        Built with RESTful architecture and efficient database queries.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">Express</span>
-                        <span class="tech-tag">SQLite</span>
-                        <span class="tech-tag">REST API</span>
+                    <h3 class="project-title">NodeTalk</h3>
+                    <p class="project-desc">Social network for devs. Real-time 1:1 chat (Socket.IO), GitHub OAuth, private profiles, follow system, Supabase avatar uploads.</p>
+                    <div class="project-tags">
+                        <span>Node.js</span><span>Express 5</span><span>TypeScript</span><span>Prisma</span><span>PostgreSQL</span><span>Socket.IO</span>
                     </div>
-                </div>
+                </article>
 
-                <!-- Project 3: Startup Planet -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">Startup Planet</h3>
+                <article class="project-card">
+                    <div class="project-top">
+                        <div class="project-icon"><i class="fas fa-pen-nib"></i></div>
                         <div class="project-links">
-                            <a href="#" class="project-link" title="Live Demo">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                            <a href="https://github.com/0xYurii/startup_planet" class="project-link" title="GitHub" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github"></i>
-                            </a>
+                            <a href="https://github.com/0xYurii/blog-api" target="_blank" rel="noopener noreferrer" title="Source code"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
-                    <p class="project-description">
-                        A comprehensive RESTful API serving a dataset of startups with advanced filtering 
-                        by industry, country, and funding status.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">Express</span>
-                        <span class="tech-tag">REST API</span>
-                        <span class="tech-tag">JSON</span>
+                    <h3 class="project-title">Blog API</h3>
+                    <p class="project-desc">Full-stack blog with REST API backend + two React frontends (public reader + author CMS). JWT auth, full CRUD, comments.</p>
+                    <div class="project-tags">
+                        <span>Node.js</span><span>Express</span><span>TypeScript</span><span>Prisma</span><span>PostgreSQL</span><span>React</span>
                     </div>
-                </div>
+                </article>
 
-                <!-- Project 4: Wild Horizons -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">Wild Horizons</h3>
+                <article class="project-card">
+                    <div class="project-top">
+                        <div class="project-icon"><i class="fas fa-crosshairs"></i></div>
                         <div class="project-links">
-                            <a href="#" class="project-link" title="Live Demo">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                            <a href="https://github.com/0xYurii/Node" class="project-link" title="GitHub" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github"></i>
-                            </a>
+                            <a href="https://github.com/0xYurii/Where-Waldo" target="_blank" rel="noopener noreferrer" title="Source code"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
-                    <p class="project-description">
-                        A dataset API featuring unique global destinations with intelligent filtering 
-                        by continent and country. Optimized for performance and scalability.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">Express</span>
-                        <span class="tech-tag">API Design</span>
-                        <span class="tech-tag">Data Filtering</span>
+                    <h3 class="project-title">Where's Brian?</h3>
+                    <p class="project-desc">Where's Waldo-style game with server-side coordinate validation to prevent cheating. Percentage-based hit detection algorithm.</p>
+                    <div class="project-tags">
+                        <span>Express</span><span>TypeScript</span><span>Prisma</span><span>React</span>
                     </div>
-                </div>
-                
+                </article>
 
-                <!-- Project 5: Assembly Endgame -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">Assembly Endgame</h3>
+                <article class="project-card">
+                    <div class="project-top">
+                        <div class="project-icon"><i class="fas fa-folder-open"></i></div>
                         <div class="project-links">
-                            <a href="https://assembly-end-game-ruddy.vercel.app/" class="project-link" title="Live Demo" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                            <a href="https://github.com/0xYurii/Assembly-EndGame" class="project-link" title="GitHub" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github"></i>
-                            </a>
+                            <a href="https://github.com/0xYurii/file-uploader" target="_blank" rel="noopener noreferrer" title="Source code"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
-                    <p class="project-description">
-                        A fun, hangman-style word guessing game built with React. Can you guess the word before the world of programming succumbs to Assembly?
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Vite</span>
-                        <span class="tech-tag">CSS</span>
+                    <h3 class="project-title">File Uploader</h3>
+                    <p class="project-desc">Session-authenticated file storage with folder organization. Passport.js, Multer, Prisma + PostgreSQL.</p>
+                    <div class="project-tags">
+                        <span>Express</span><span>Passport.js</span><span>Multer</span><span>Prisma</span><span>PostgreSQL</span>
                     </div>
-                </div>
-                
+                </article>
 
-                <!-- Project 6: Chef Claude -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3 class="project-title">Chef Claude</h3>
+                <article class="project-card">
+                    <div class="project-top">
+                        <div class="project-icon"><i class="fas fa-mobile-alt"></i></div>
                         <div class="project-links">
-                            <a href="https://chef-claude-one-mauve.vercel.app/" class="project-link" title="Live Demo" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                            <a href="https://github.com/0xYurii/Chef-Claude" class="project-link" title="GitHub" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-github"></i>
-                            </a>
+                            <a href="https://github.com/0xYurii/cellsync" target="_blank" rel="noopener noreferrer" title="Source code"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
-                    <p class="project-description">
-                        A smart recipe assistant that helps you discover delicious meals you can make with the ingredients you already have, powered by the Llama 3.1 model.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Vite</span>
-                        <span class="tech-tag">Hugging Face API</span>
+                    <h3 class="project-title">CellSync</h3>
+                    <p class="project-desc">Phone inventory REST API with advanced filtering and full CRUD operations.</p>
+                    <div class="project-tags">
+                        <span>Node.js</span><span>Express</span><span>REST API</span>
                     </div>
-                </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-top">
+                        <div class="project-icon"><i class="fas fa-record-vinyl"></i></div>
+                        <div class="project-links">
+                            <a href="https://github.com/0xYurii/spiral-sounds" target="_blank" rel="noopener noreferrer" title="Source code"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Spiral Sounds</h3>
+                    <p class="project-desc">Music e-commerce backend. Product catalog, genre filtering, dynamic search, shopping cart.</p>
+                    <div class="project-tags">
+                        <span>Node.js</span><span>Express</span><span>REST API</span>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-top">
+                        <div class="project-icon"><i class="fas fa-gamepad"></i></div>
+                        <div class="project-links">
+                            <a href="https://assembly-end-game-ruddy.vercel.app/" target="_blank" rel="noopener noreferrer" title="Live demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/0xYurii/Assembly-EndGame" target="_blank" rel="noopener noreferrer" title="Source code"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Assembly Endgame</h3>
+                    <p class="project-desc">Hangman-style React game. Can you save programming from Assembly?</p>
+                    <div class="project-tags">
+                        <span>React</span><span>Vite</span>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-top">
+                        <div class="project-icon"><i class="fas fa-utensils"></i></div>
+                        <div class="project-links">
+                            <a href="https://chef-claude-one-mauve.vercel.app/" target="_blank" rel="noopener noreferrer" title="Live demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/0xYurii/Chef-Claude" target="_blank" rel="noopener noreferrer" title="Source code"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Chef Claude</h3>
+                    <p class="project-desc">AI recipe assistant using Hugging Face API. Get meal ideas from your ingredients.</p>
+                    <div class="project-tags">
+                        <span>React</span><span>Vite</span><span>Hugging Face API</span>
+                    </div>
+                </article>
 
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section class="skills-section" id="skills">
+    <section class="skills" id="skills">
         <div class="container">
-            <div class="skills-header">
-                <h2 class="skills-title">Technical Skills</h2>
-                <p class="skills-subtitle">A comprehensive overview of my technical expertise across backend development, databases, frontend technologies, and development tools.</p>
+            <div class="section-header">
+                <h2 class="section-title">Skills</h2>
+                <p class="section-subtitle">What I work with daily.</p>
             </div>
-            
             <div class="skills-grid">
-                <!-- Backend Card -->
-                <div class="skill-card">
-                    <div class="skill-card-header">
-                        <div class="skill-icon backend">
-                            <i class="fa-solid fa-server"></i>
-                        </div>
-                        <h3 class="skill-category-title">Backend</h3>
-                    </div>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">Node.js</span>
-                                <span class="skill-badge advanced">Advanced</span>
-                            </div>
-                            <div class="progress-container">
-                                <div class="progress-fill advanced-fill"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">Express.js</span>
-                                <span class="skill-badge intermediate">Intermediate</span>
-                            </div>
-                            <div class="progress-container">
-                                <div class="progress-fill advanced-fill"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">API Design</span>
-                                <span class="skill-badge intermediate">Intermediate</span>
-                            </div>
-                            <div class="progress-container">
-                                <div class="progress-fill intermediate-fill"></div>
-                            </div>
-                        </div>
+                <div class="skill-group">
+                    <h3 class="skill-group-title"><i class="fas fa-server"></i> Backend</h3>
+                    <div class="skill-tags">
+                        <span>Node.js</span><span>Express</span><span>TypeScript</span><span>Prisma ORM</span><span>REST API Design</span><span>Socket.IO</span>
                     </div>
                 </div>
-
-                <!-- Database Card -->
-                <div class="skill-card">
-                    <div class="skill-card-header">
-                        <div class="skill-icon database">
-                            <i class="fa-solid fa-database"></i>
-                        </div>
-                        <h3 class="skill-category-title">Database</h3>
-                    </div>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">SQLite</span>
-                                <span class="skill-badge beginner">Beginner</span>
-                            </div>
-                            <div class="progress-container">
-                                <div class="progress-fill intermediate-fill"></div>
-                            </div>
-                        </div>
+                <div class="skill-group">
+                    <h3 class="skill-group-title"><i class="fas fa-database"></i> Database</h3>
+                    <div class="skill-tags">
+                        <span>PostgreSQL</span><span>SQLite</span>
                     </div>
                 </div>
-
-                <!-- Frontend Card -->
-                <div class="skill-card">
-                    <div class="skill-card-header">
-                        <div class="skill-icon frontend">
-                            <i class="fa-solid fa-code"></i>
-                        </div>
-                        <h3 class="skill-category-title">Frontend</h3>
-                    </div>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">HTML</span>
-                                <span class="skill-badge advanced">Advanced</span>
-                            </div>
-                            <div class="progress-container">
-                                <div class="progress-fill advanced-fill"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">CSS</span>
-                                <span class="skill-badge intermediate">Intermediate</span>
-                            </div>
-                            <div class="progress-container">
-                                <div class="progress-fill advanced-fill"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">JavaScript</span>
-                                <span class="skill-badge advanced">Advanced</span>
-                            </div>
-                            <div class="progress-container">
-                                <div class="progress-fill advanced-fill"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">React</span>
-                                <span class="skill-badge intermediate">Intermediate</span>
-                            </div>
-                            <div class="progress-container">
-                                <div class="progress-fill intermediate-fill"></div>
-                            </div>
-                        </div>
+                <div class="skill-group">
+                    <h3 class="skill-group-title"><i class="fas fa-lock"></i> Auth</h3>
+                    <div class="skill-tags">
+                        <span>Passport.js</span><span>JWT</span><span>GitHub OAuth</span><span>Sessions</span>
                     </div>
                 </div>
-
-                <!-- Tools Card -->
-                <div class="skill-card">
-                    <div class="skill-card-header">
-                        <div class="skill-icon tools">
-                            <i class="fa-solid fa-wrench"></i>
-                        </div>
-                        <h3 class="skill-category-title">Tools</h3>
-                    </div>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">Git</span>
-                                <span class="skill-badge intermediate">Intermediate</span>
-                            </div>
-                            <div class="progress-container">
-                                <div class="progress-fill intermediate-fill"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">Linux</span>
-                                <span class="skill-badge advanced">Advanced</span>
-                            </div>
-                            <div class="progress-container">
-                                <div class="progress-fill intermediate-fill"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- GitHub Activity Section -->
-        <div class="github-activity">
-            <h3 class="github-activity-title">GitHub Activity</h3>
-            <p class="github-activity-subtitle">My coding journey visualized through contributions</p>
-            <div class="github-chart-container">
-                <img src="https://ghchart.rshah.org/0xYurii" alt="GitHub Contributions Chart" class="github-chart" />
-                <div class="github-stats">
-                    <div class="github-stat">
-                        <span class="github-stat-number">60</span>
-                        <span class="github-stat-label">Days of Code</span>
-                    </div>
-                    <div class="github-stat">
-                        <span class="github-stat-number">~400</span>
-                        <span class="github-stat-label">Contributions</span>
-                    </div>
-                    <div class="github-stat">
-                        <span class="github-stat-number">30+</span>
-                        <span class="github-stat-label">Repositories</span>
+                <div class="skill-group">
+                    <h3 class="skill-group-title"><i class="fas fa-wrench"></i> Tools</h3>
+                    <div class="skill-tags">
+                        <span>Git</span><span>Linux</span><span>Supabase</span><span>Zod</span><span>Multer</span><span>Vitest</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-
-    <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title">Let's Connect</h2>
-            <p class="section-subtitle">Ready to build something amazing together?</p>
-            
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Get In Touch</h3>
-                    <p>I'm always interested in new opportunities and exciting projects. Let's discuss how we can work together to create something extraordinary.</p>
-                    
+            <div class="contact-layout">
+                <div class="contact-text">
+                    <h2 class="section-title">Get in touch</h2>
+                    <p class="section-subtitle">Reach out through any of these channels.</p>
                     <div class="contact-links">
                         <a href="https://github.com/0xYurii" class="contact-link" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-github"></i>
-                            <span>GitHub</span>
+                            <i class="fab fa-github"></i> GitHub
                         </a>
                         <a href="https://x.com/Younes_Hebaiche" class="contact-link" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-twitter"></i>
-                            <span>Twitter</span>
+                            <i class="fab fa-x-twitter"></i> Twitter
                         </a>
                     </div>
                 </div>
-                
-                <div class="contact-visual">
+                <div class="contact-terminal">
                     <div class="terminal">
-                        <div class="terminal-header">
-                            <span class="terminal-title">contact@0xyurii.dev</span>
-                            <div class="terminal-controls">
-                                <span></span>
-                                <span></span>
-                                <span></span>
+                        <div class="terminal-bar">
+                            <div class="terminal-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
                             </div>
+                            <span class="terminal-title">terminal</span>
+                            <span class="terminal-spacer"></span>
                         </div>
-                        <div class="terminal-content">
-                            <span class="terminal-line">$ <span class="terminal-command">ping 0xYurii</span></span>
-                            <span class="terminal-line">PING 0xYurii: 56 data bytes</span>
-                            <span class="terminal-line">64 bytes from 0xYurii: icmp_seq=0 ttl=64 time=0.001ms</span>
-                            <span class="terminal-line">64 bytes from 0xYurii: icmp_seq=1 ttl=64 time=0.002ms</span>
-                            <span class="terminal-line">^C</span>
-                            <span class="terminal-line">$ <span class="terminal-cursor">_</span></span>
-                        </div>
-                    </div>
+                        <div class="terminal-body">
+                            <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">ping 0xYurii</span></div>
+                            <div class="term-line term-output">PING 0xYurii: 56 data bytes</div>
+                            <div class="term-line term-output">64 bytes from 0xYurii: icmp_seq=0 ttl=64 time=0.042ms</div>
+                            <div class="term-line term-output">64 bytes from 0xYurii: icmp_seq=1 ttl=64 time=0.038ms</div>
+                            <div class="term-line term-output">64 bytes from 0xYurii: icmp_seq=2 ttl=64 time=0.041ms</div>
+                            <div class="term-line"><span class="term-prompt">$</span> <span class="term-cursor"></span></div>
                         </div>
                     </div>
                 </div>
@@ -461,11 +277,8 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Younes Hebaiche (0xYurii).</p>
-        </div>
+        <p>Built by 0xYurii</p>
     </footer>
 
     <script src="script.js"></script>
